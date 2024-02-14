@@ -12,7 +12,6 @@ function Header() {
       <Link to="/">
         <img
           src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
-          alt="amazon-logo"
           className="header_logo"
         />
       </Link>
