@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Product.css";
 import { useStateValue } from "../../StateProvider";
+import { useSpring, animated } from "react-spring"; // Import useSpring and animated from react-spring
+import { Close } from "@material-ui/icons"; // Import Close icon from Material-UI
 
 function Product({ id, title, image, price, rating }) {
   const [{ basket }, dispatch] = useStateValue();
+  const [showNotification, setShowNotification] = useState(false);
 
   const addToBasket = () => {
     // dispatch the item into the data layer
@@ -17,7 +20,21 @@ function Product({ id, title, image, price, rating }) {
         rating: rating,
       },
     });
+    setShowNotification(true);
   };
+
+  const closeNotification = () => {
+    setShowNotification(false);
+  };
+
+  // Define animation properties
+  const notificationAnimation = useSpring({
+    from: { right: -300, opacity: 0 }, // Initial position outside the viewport
+    to: {
+      right: showNotification ? 0 : -300,
+      opacity: showNotification ? 1 : 0,
+    }, // Show notification with animation
+  });
 
   return (
     <div className="product">
@@ -39,6 +56,14 @@ function Product({ id, title, image, price, rating }) {
       <img src={image} alt="" />
 
       <button onClick={addToBasket}>Add to Basket</button>
+
+      {/* Animated notification */}
+      <animated.div style={notificationAnimation} className="notification">
+        <div className="notification_content">
+          <p>{title} added to basket</p>
+          <Close className="close_button" onClick={closeNotification} />
+        </div>
+      </animated.div>
     </div>
   );
 }
