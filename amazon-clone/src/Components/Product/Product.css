@@ -25,15 +25,23 @@
     margin-bottom: 15px;
 }
 
+.title:hover{
+    color: red;
+    cursor: pointer;
+}
+
 .product_price {
     margin-top: 5px;
 }
 
 .product > button {
-    background-color: #f0c14b;
+    background-color: #ffdf00;
     border: 1px solid;
+    height: 30px;
+    border-radius: 10px;
     margin-top: 10px;
-    border-color: #a88734 #9c7e31 #846a29;
+    width: 30%;
+    border-color: #ffdf00;
     color: #111;
     cursor: pointer;
 }
@@ -43,7 +51,6 @@
 }
 
 .notification {
-    
     display: flex;
     position: absolute;
     top: 10px;

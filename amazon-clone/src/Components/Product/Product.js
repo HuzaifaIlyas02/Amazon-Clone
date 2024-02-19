@@ -39,7 +39,7 @@ function Product({ id, title, image, price, rating }) {
   return (
     <div className="product">
       <div className="product_info">
-        <p>{title}</p>
+        <p className="title">{title}</p>
         <p className="product_price">
           <small>$</small>
           <strong>{price}</strong>
@@ -55,7 +55,7 @@ function Product({ id, title, image, price, rating }) {
 
       <img src={image} alt="" />
 
-      <button onClick={addToBasket}>Add to Basket</button>
+      <button onClick={addToBasket}>Add to Cart</button>
 
       {/* Animated notification */}
       <animated.div style={notificationAnimation} className="notification">

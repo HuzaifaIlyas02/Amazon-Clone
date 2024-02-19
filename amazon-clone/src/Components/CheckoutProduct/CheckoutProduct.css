@@ -11,10 +11,13 @@
 }
 
 .checkoutProduct_info > button{
-    background-color: #f0c14b;
+    background-color: #ffdf00;
     border: 1px solid;
+    height: 30px;
+    border-radius: 10px;
     margin-top: 10px;
-    border-color: #a88734 #9c7e31 #846a29;
+    width: 30%;
+    border-color: #ffdf00;
     color: #111;
     cursor: pointer;
 }
@@ -31,5 +34,10 @@
 
 .checkoutProduct_title{
     font-size: 17px;
-    font-weight: 800;
+    font-weight: 600;
+}
+
+.checkoutProduct_title:hover{
+    color: red;
+    cursor: pointer;
 }
