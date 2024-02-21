@@ -40,7 +40,7 @@
     height: 30px;
     border-radius: 10px;
     margin-top: 10px;
-    width: 30%;
+    width: 100px;
     border-color: #ffdf00;
     color: #111;
     cursor: pointer;
@@ -51,24 +51,25 @@
 }
 
 .notification {
-    display: flex;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
+    position: fixed; /* Position fixed to stay at the top right corner of the page */
+    margin-top: 50px;
+    width: 30%;
+    right: 20px; /* Adjust as needed */
+    border: 3px solid;
     border-radius: 5px;
+    z-index: 9999;  /* Ensure the notification appears above other content */
+    flex-direction: column; /* Display notifications in a column */
+  align-items: flex-end; 
   }
   
   .notification_content {
-    position: relative;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
   }
   
   .close_button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
     cursor: pointer;
+    display: flex;
   }
-  

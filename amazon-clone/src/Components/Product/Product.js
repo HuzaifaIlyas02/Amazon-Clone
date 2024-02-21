@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Product.css";
 import { useStateValue } from "../../StateProvider";
 import { useSpring, animated } from "react-spring"; // Import useSpring and animated from react-spring
@@ -21,6 +21,11 @@ function Product({ id, title, image, price, rating }) {
       },
     });
     setShowNotification(true);
+
+    // Hide the notification after 10 seconds
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 7000); // 5 seconds
   };
 
   const closeNotification = () => {
@@ -29,9 +34,9 @@ function Product({ id, title, image, price, rating }) {
 
   // Define animation properties
   const notificationAnimation = useSpring({
-    from: { right: -300, opacity: 0 }, // Initial position outside the viewport
+    from: { top: -100, opacity: 0 }, // Initial position above the viewport
     to: {
-      right: showNotification ? 0 : -300,
+      top: showNotification ? 20 : -100, // Adjust the final position of the notification
       opacity: showNotification ? 1 : 0,
     }, // Show notification with animation
   });
@@ -39,7 +44,7 @@ function Product({ id, title, image, price, rating }) {
   return (
     <div className="product">
       <div className="product_info">
-        <p className="title">{title}</p>
+        <p className="">{title}</p>
         <p className="product_price">
           <small>$</small>
           <strong>{price}</strong>
@@ -48,7 +53,7 @@ function Product({ id, title, image, price, rating }) {
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <p>🌟</p>
+              <p key={i}>🌟</p>
             ))}
         </div>
       </div>

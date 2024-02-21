@@ -16,7 +16,7 @@
     height: 30px;
     border-radius: 10px;
     margin-top: 10px;
-    width: 30%;
+    width: 150px;
     border-color: #ffdf00;
     color: #111;
     cursor: pointer;
@@ -41,3 +41,23 @@
     color: red;
     cursor: pointer;
 }
+
+.notification {
+    position: fixed; /* Position fixed to stay at the top right corner of the page */
+    margin-top: 50px;
+    width: 30%;
+    right: 20px; /* Adjust as needed */
+    border: 3px solid;
+    border-radius: 5px;
+    z-index: 9999;  /* Ensure the notification appears above other content */
+    flex-direction: column; /* Display notifications in a column */
+  align-items: flex-end; 
+  }
+  
+  .notification_content {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
