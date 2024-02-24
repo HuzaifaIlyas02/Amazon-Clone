@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import CenterFocusWeakIcon from "@material-ui/icons/CenterFocusWeak";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../../StateProvider";
 import { auth } from "../../firebase";
@@ -23,7 +24,12 @@ function Header() {
         />
       </Link>
       <div className="header_search">
-        <input type="text" className="header_searchInput" />
+        <input
+          type="text"
+          className="header_searchInput"
+          placeholder="Search Amazon"
+        />
+        <CenterFocusWeakIcon />
         <SearchIcon className="header_searchIcon" />
       </div>
       <div className="header_nav">

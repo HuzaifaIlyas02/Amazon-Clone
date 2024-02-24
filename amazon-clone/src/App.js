@@ -11,6 +11,7 @@ import Payment from "./Components/Payment/Payment";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Orders from "./Components/Orders/Orders";
+import Footer from "./Components/Footer/Footer";
 
 const promise = loadStripe(
   "pk_test_51OmheRCgpVnhkvFBtMRyqztJyxnkUxJIJgDR7tfyrwnDtnMDIJQjKUweeTAjT00sodCQST2JKTOqwavoOwOYxDBQ001dILIB5E"
@@ -86,6 +87,7 @@ function App() {
               <>
                 <Header />
                 <Home />
+                <Footer />
               </>
             }
           />
