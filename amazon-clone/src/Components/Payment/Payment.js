@@ -8,6 +8,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import axios from "../../axios";
 import { set } from "sanity";
+import { db } from "../../firebase";
 
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -36,6 +37,8 @@ function Payment() {
     getClientSecret();
   }, [basket]);
 
+  console.log("THE SECRET IS >>>", clientSecret);
+
   const handleSubmit = async (e) => {
     // do all the fancy stripe stuff...
 
@@ -52,12 +55,24 @@ function Payment() {
       .then(({ paymentIntent }) => {
         // paymentIntent = payment confirmation
 
+        db.collection("users")
+          .doc(user?.uid)
+          .collection("orders")
+          .doc(paymentIntent.id)
+          .set({
+            basket: basket,
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+          });
+
         setSucceeded(true); // payment has been processed
         setError(null); // no errors
         setProcessing(false); // no longer processing
 
-        // Redirect to orders page
-        set(set("/orders"));
+        dispatch({
+          type: "EMPTY_BASKET",
+        });
+        Navigate("/orders");
       });
   };
 
@@ -107,7 +122,10 @@ function Payment() {
           <div className="payment_details">
             {/* Stripe magic will go */}
             <form onSubmit={handleSubmit}>
-              <CardElement onChange={handleChange} />
+              <CardElement
+                className="cardnumber_holder"
+                onChange={handleChange}
+              />
               <div className="payment_priceContainer">
                 <CurrencyFormat
                   renderText={(value) => <h3>Order Total: {value}</h3>}
