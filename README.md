@@ -76,3 +76,5 @@ For an overview of the app and its functionalities, please visit [App Overview](
 Please note that the backend is not deployed on Firebase due to paid limitations. You can deploy the backend on Firebase or use alternative hosting solutions.
 
 ## Video
+
+https://github.com/HuzaifaIlyas02/Amazon-Clone/assets/86406012/5cdae17b-b8a1-4c5a-ac8c-1761c4c97c43
